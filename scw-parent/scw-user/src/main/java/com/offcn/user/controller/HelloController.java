@@ -34,4 +34,9 @@ public class HelloController {
     public User addUser(String name, String email) {
         return new User(1L, name, email);
     }
+
+
+    public void test(){
+        System.out.println("哈哈哈哈");
+    }
 }
