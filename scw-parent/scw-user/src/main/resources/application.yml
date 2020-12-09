@@ -1,0 +1,47 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: scwUser
+  #MYSQL
+  datasource:
+    url: jdbc:mysql://localhost:3306/atcrowdfunding?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #开启数据库连接池监控
+    filter: stat
+  #Redis
+  redis:
+    host: 192.168.228.128
+    port: 6379
+#myBatis
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:com/offcn/user/mapper/*.xml
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+#日志
+logging:
+  file:
+    #日志输入的路径
+    path: F:\\log\\scw-user
+  level:
+    com:
+      #表示日志的一个级别，在开发的到时候进行输出的，在上线的时候我们就会改成info
+      offcn: debug
+
+#短信验证的文件配置，，--->相当于属性配置。在类中直接引入即可
+sms:
+  appcode: ce10379a43b04a23a51c110c6596b857
+  tpl_id: TP1711063
+  host: http://dingxin.market.alicloudapi.com
+  path: /dx/sendSms
+  method: POST
